@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Management_Hotel.Views.RoomTypeManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Types de Chambres" FontSize="24" Margin="0,0,0,20"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,20">
+            <Button Content="Nouveau Type" Click="AddRoomType_Click" 
+                    Width="150" Height="30" Margin="0,0,10,0"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2" x:Name="RoomTypesGrid" 
+                  AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Libellé" Binding="{Binding Libelle}"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Capacité" Binding="{Binding Capacite}"/>
+                <DataGridTextColumn Header="Prix/Nuit" Binding="{Binding Prixnuit}"/>
+                <DataGridTemplateColumn Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Modifier" Click="EditRoomType_Click" 
+                                        Margin="0,0,5,0"/>
+                                <Button Content="Supprimer" Click="DeleteRoomType_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

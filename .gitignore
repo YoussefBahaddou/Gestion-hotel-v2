@@ -1,0 +1,16 @@
+# Ignore Visual Studio temporary files, build results, and
+# other unnecessary files.
+
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.g.*
+*.g.i.*

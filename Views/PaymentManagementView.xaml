@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Management_Hotel.Views.PaymentManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Gestion des Paiements" FontSize="24" Margin="0,0,0,20"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,20">
+            <Button Content="Nouveau Paiement" Click="AddPayment_Click" 
+                    Width="150" Height="30" Margin="0,0,10,0"/>
+            <Button Content="Exporter" Click="ExportPayments_Click" 
+                    Width="100" Height="30"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2" x:Name="PaymentsGrid" 
+                  AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Réservation" 
+                    Binding="{Binding IdreservationNavigation.Idreservation}"/>
+                <DataGridTextColumn Header="Client" 
+                    Binding="{Binding IdreservationNavigation.IdclientNavigation.Nom}"/>
+                <DataGridTextColumn Header="Date" 
+                    Binding="{Binding Datepaiement}"/>
+                <DataGridTextColumn Header="Montant" 
+                    Binding="{Binding Montant, StringFormat=C}"/>
+                <DataGridTextColumn Header="Mode" 
+                    Binding="{Binding Modepaiement}"/>
+                <DataGridTemplateColumn Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Modifier" Click="EditPayment_Click" 
+                                        Margin="0,0,5,0"/>
+                                <Button Content="Reçu" Click="GenerateReceipt_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

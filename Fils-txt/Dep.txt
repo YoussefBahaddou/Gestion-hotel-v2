@@ -1,0 +1,7 @@
+Install-Package ClosedXML
+Install-Package itextsharp
+Install-Package Microsoft.EntityFrameworkCore
+Install-Package Microsoft.EntityFrameworkCore.Tools
+Install-Package Microsoft.Extensions.Configuration
+Install-Package Microsoft.Extensions.Configuration.Json
+Install-Package Npgsql.EntityFrameworkCore.PostgreSQL

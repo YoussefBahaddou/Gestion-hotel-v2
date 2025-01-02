@@ -6,23 +6,41 @@ namespace Management_Hotel.Views.Dialogs
     public partial class AddEditReservationDialog : Window
     {
         private Reservation _reservation;
-    
+        private readonly HotelDbContext _context;
+
         public AddEditReservationDialog()
         {
             InitializeComponent();
+            _context = new HotelDbContext();
             _reservation = new Reservation();
+            LoadComboBoxData();
         }
-    
+
+        private void LoadComboBoxData()
+        {
+            // Load Clients
+            var clients = _context.Clients.ToList();
+            ClientComboBox.ItemsSource = clients;
+            ClientComboBox.DisplayMemberPath = "Nom";
+            ClientComboBox.SelectedValuePath = "Idclient";
+
+            // Load Room Types
+            var roomTypes = _context.Typechambres.ToList();
+            RoomTypeComboBox.ItemsSource = roomTypes;
+            RoomTypeComboBox.DisplayMemberPath = "Libelle";
+            RoomTypeComboBox.SelectedValuePath = "Idtype";
+        }
+
         public void SetReservation(Reservation reservation)
         {
             _reservation = reservation;
-            // Load reservation data into form fields
             ClientComboBox.SelectedValue = reservation.Idclient;
             DateArriveePicker.SelectedDate = reservation.Datearrivee.ToDateTime(TimeOnly.MinValue);
             DateDepartPicker.SelectedDate = reservation.Datedepart.ToDateTime(TimeOnly.MinValue);
             StatusComboBox.Text = reservation.Statut;
         }
-    
+
+
         public Reservation GetReservation()
         {
             _reservation.Idclient = (int)ClientComboBox.SelectedValue;
@@ -30,10 +48,10 @@ namespace Management_Hotel.Views.Dialogs
             _reservation.Datedepart = DateOnly.FromDateTime(DateDepartPicker.SelectedDate.Value);
             _reservation.Statut = StatusComboBox.Text;
             _reservation.Datereservation = DateOnly.FromDateTime(DateTime.Now);
-    
+
             return _reservation;
         }
-    
+
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;

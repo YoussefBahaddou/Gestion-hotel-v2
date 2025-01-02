@@ -27,9 +27,18 @@ namespace Management_Hotel.Views
             var dialog = new AddEditClientDialog();
             if (dialog.ShowDialog() == true)
             {
-                var newClient = dialog.Client;
-                _viewModel.AddClient(newClient);
-                LoadClients();
+                var result = _viewModel.AddClient(dialog.Client);
+                if (result)
+                {
+                    MessageBox.Show("Client ajouté avec succès!", "Succès",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadClients();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de l'ajout du client", "Erreur",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 

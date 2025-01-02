@@ -12,8 +12,6 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,20">
             <Button Content="Nouveau Client" Click="AddClient_Click" Width="150" Height="30" Margin="0,0,10,0"/>
-            <Button Content="Exporter" Click="ExportClients_Click" Width="100" Height="30" Margin="0,0,10,0"/>
-            <Button Content="Importer" Click="ImportClients_Click" Width="100" Height="30"/>
         </StackPanel>
 
         <DataGrid Grid.Row="2" x:Name="ClientsGrid" AutoGenerateColumns="False" IsReadOnly="True">
@@ -23,17 +21,6 @@
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Téléphone" Binding="{Binding Telephone}"/>
                 <DataGridTextColumn Header="Adresse" Binding="{Binding Adresse}"/>
-                <DataGridTemplateColumn Header="Actions">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="Modifier" Click="EditClient_Click" Margin="0,0,5,0"/>
-                                <Button Content="Supprimer" Click="DeleteClient_Click"/>
-                                <Button Content="Réservations" Click="ViewReservations_Click" Margin="5,0,0,0"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

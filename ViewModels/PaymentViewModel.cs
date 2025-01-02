@@ -11,6 +11,7 @@ namespace Management_Hotel.ViewModels
         private readonly HotelDbContext _context;
         public ObservableCollection<Paiement> Payments { get; set; }
 
+
         public PaymentViewModel()
         {
             _context = new HotelDbContext();
@@ -26,11 +27,19 @@ namespace Management_Hotel.ViewModels
             Payments = new ObservableCollection<Paiement>(payments);
         }
 
-        public void AddPayment(Paiement payment)
+        public bool AddPayment(Paiement payment)
         {
-            _context.Paiements.Add(payment);
-            _context.SaveChanges();
-            LoadPayments();
+            try
+            {
+                _context.Paiements.Add(payment);
+                _context.SaveChanges();
+                LoadPayments();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public void UpdatePayment(Paiement payment)

@@ -27,11 +27,21 @@ namespace Management_Hotel.Views
             var dialog = new AddEditRoomTypeDialog();
             if (dialog.ShowDialog() == true)
             {
-                var newRoomType = dialog.GetRoomType();
-                _viewModel.AddRoomType(newRoomType);
-                LoadRoomTypes();
+                var result = _viewModel.AddRoomType(dialog.GetRoomType());
+                if (result)
+                {
+                    MessageBox.Show("Type de chambre ajouté avec succès!", "Succès",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadRoomTypes();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de l'ajout du type de chambre", "Erreur",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
+
 
         private void EditRoomType_Click(object sender, RoutedEventArgs e)
         {

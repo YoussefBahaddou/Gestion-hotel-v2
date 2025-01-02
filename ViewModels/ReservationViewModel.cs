@@ -17,6 +17,7 @@ namespace Management_Hotel.ViewModels
             LoadReservations();
         }
 
+
         private void LoadReservations()
         {
             var reservations = _context.Reservations
@@ -26,12 +27,23 @@ namespace Management_Hotel.ViewModels
             Reservations = new ObservableCollection<Reservation>(reservations);
         }
 
-        public void AddReservation(Reservation reservation)
+
+
+        public bool AddReservation(Reservation reservation)
         {
-            _context.Reservations.Add(reservation);
-            _context.SaveChanges();
-            LoadReservations();
+            try
+            {
+                _context.Reservations.Add(reservation);
+                _context.SaveChanges();
+                LoadReservations();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
+
 
         public void UpdateReservation(Reservation reservation)
         {

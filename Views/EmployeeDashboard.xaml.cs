@@ -12,9 +12,9 @@ namespace Management_Hotel.Views
 
         private void ClientsButton_Click(object sender, RoutedEventArgs e)
         {
-            var clientDialog = new Dialogs.AddEditClientDialog();
-            clientDialog.ShowDialog();
+            MainContent.Navigate(new ClientManagementView());
         }
+
 
         private void AvailabilityButton_Click(object sender, RoutedEventArgs e)
         {
@@ -24,14 +24,14 @@ namespace Management_Hotel.Views
 
         private void ReservationsButton_Click(object sender, RoutedEventArgs e)
         {
-            var reservationDialog = new Dialogs.AddEditReservationDialog();
-            reservationDialog.ShowDialog();
+            MainContent.Navigate(new ReservationManagementView());
         }
+
 
         private void PaymentsButton_Click(object sender, RoutedEventArgs e)
         {
-            var paymentDialog = new Dialogs.AddEditPaymentDialog();
-            paymentDialog.ShowDialog();
+            MainContent.Navigate(new PaymentManagementView());
         }
+
     }
 }

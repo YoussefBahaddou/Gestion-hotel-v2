@@ -21,12 +21,13 @@
                 <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Téléphone" Binding="{Binding Telephone}"/>
+                <DataGridTextColumn Header="Rôle" Binding="{Binding Role}"/>
+                
                 <DataGridTemplateColumn Header="Actions">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Content="Modifier" Click="EditEmployee_Click" 
-                                        Margin="0,0,5,0"/>
+                                <Button Content="Modifier" Click="EditEmployee_Click" Margin="0,0,5,0"/>
                                 <Button Content="Supprimer" Click="DeleteEmployee_Click"/>
                             </StackPanel>
                         </DataTemplate>

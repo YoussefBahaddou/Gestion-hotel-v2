@@ -1,5 +1,6 @@
 ﻿using Management_Hotel.Models;
 using Management_Hotel.ViewModels;
+using Management_Hotel.Views.Dialogs;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -23,9 +24,25 @@ namespace Management_Hotel.Views
 
         private void AddPayment_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Implement add payment dialog
-            MessageBox.Show("Fonctionnalité d'ajout de paiement à implémenter");
+            var dialog = new AddEditPaymentDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                var result = _viewModel.AddPayment(dialog.GetPayment());
+                if (result)
+                {
+                    MessageBox.Show("Paiement ajouté avec succès!", "Succès",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadPayments();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de l'ajout du paiement", "Erreur",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
+
+
 
         private void EditPayment_Click(object sender, RoutedEventArgs e)
         {

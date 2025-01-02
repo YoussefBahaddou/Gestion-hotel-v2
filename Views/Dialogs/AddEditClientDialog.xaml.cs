@@ -37,11 +37,20 @@ namespace Management_Hotel.Views.Dialogs
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(NomTextBox.Text) ||
+                string.IsNullOrWhiteSpace(EmailTextBox.Text) ||
+                string.IsNullOrWhiteSpace(TelephoneTextBox.Text))
+            {
+                MessageBox.Show("Veuillez remplir tous les champs obligatoires", "Erreur",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             Client.Nom = NomTextBox.Text;
             Client.Prenom = PrenomTextBox.Text;
             Client.Email = EmailTextBox.Text;
             Client.Telephone = TelephoneTextBox.Text;
-            //Client.Adresse = AdresseTextBox.Text;
+            Client.Adresse = AdresseTextBox.Text;
 
             DialogResult = true;
         }

@@ -22,11 +22,19 @@ namespace Management_Hotel.ViewModels
             RoomTypes = new ObservableCollection<Typechambre>(types);
         }
 
-        public void AddRoomType(Typechambre roomType)
+        public bool AddRoomType(Typechambre roomType)
         {
-            _context.Typechambres.Add(roomType);
-            _context.SaveChanges();
-            RoomTypes.Add(roomType);
+            try
+            {
+                _context.Typechambres.Add(roomType);
+                _context.SaveChanges();
+                RoomTypes.Add(roomType);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public void UpdateRoomType(Typechambre roomType)

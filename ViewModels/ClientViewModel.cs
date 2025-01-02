@@ -22,11 +22,20 @@ namespace Management_Hotel.ViewModels
             Clients = new ObservableCollection<Client>(clients);
         }
 
-        public void AddClient(Client client)
+
+        public bool AddClient(Client client)
         {
-            _context.Clients.Add(client);
-            _context.SaveChanges();
-            Clients.Add(client);
+            try
+            {
+                _context.Clients.Add(client);
+                _context.SaveChanges();
+                Clients.Add(client);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public void UpdateClient(Client client)

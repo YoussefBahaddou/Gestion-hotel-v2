@@ -27,10 +27,21 @@ namespace Management_Hotel.Views
             var dialog = new AddEditEmployeeDialog();
             if (dialog.ShowDialog() == true)
             {
-                _viewModel.AddEmployee(dialog.Employee);
-                LoadEmployees();
+                var result = _viewModel.AddEmployee(dialog.Employee);
+                if (result)
+                {
+                    MessageBox.Show("Employé ajouté avec succès!", "Succès",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadEmployees();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de l'ajout de l'employé", "Erreur",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
+
 
         private void EditEmployee_Click(object sender, RoutedEventArgs e)
         {

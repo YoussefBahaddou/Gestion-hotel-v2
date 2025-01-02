@@ -12,39 +12,22 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,20">
             <Button Content="Nouvelle Réservation" Click="AddReservation_Click" 
-                    Width="150" Height="30" Margin="0,0,10,0"/>
-            <Button Content="Actualiser" Click="RefreshReservations_Click" 
-                    Width="100" Height="30"/>
+                Width="150" Height="30" Margin="0,0,10,0"/>
         </StackPanel>
 
         <DataGrid Grid.Row="2" x:Name="ReservationsGrid" 
-                  AutoGenerateColumns="False" IsReadOnly="True">
+              AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Client" 
-                    Binding="{Binding IdclientNavigation.Nom}"/>
+                Binding="{Binding IdclientNavigation.Nom}"/>
                 <DataGridTextColumn Header="Date Réservation" 
-                    Binding="{Binding Datereservation}"/>
+                Binding="{Binding Datereservation}"/>
                 <DataGridTextColumn Header="Arrivée" 
-                    Binding="{Binding Datearrivee}"/>
+                Binding="{Binding Datearrivee}"/>
                 <DataGridTextColumn Header="Départ" 
-                    Binding="{Binding Datedepart}"/>
+                Binding="{Binding Datedepart}"/>
                 <DataGridTextColumn Header="Statut" 
-                    Binding="{Binding Statut}"/>
-                <DataGridTemplateColumn Header="Actions">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="Modifier" Click="EditReservation_Click" 
-                                        Margin="0,0,5,0"/>
-                                <Button Content="PDF" Click="GeneratePDF_Click" 
-                                        Margin="0,0,5,0"/>
-                                <Button Content="Email" Click="SendEmail_Click" 
-                                        Margin="0,0,5,0"/>
-                                <Button Content="Supprimer" Click="DeleteReservation_Click"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                Binding="{Binding Statut}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

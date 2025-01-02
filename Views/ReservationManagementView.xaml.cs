@@ -9,13 +9,14 @@ namespace Management_Hotel.Views
     public partial class ReservationManagementView : UserControl
     {
         private readonly ReservationViewModel _viewModel;
-
+        
         public ReservationManagementView()
         {
             InitializeComponent();
             _viewModel = new ReservationViewModel();
             LoadReservations();
         }
+
 
         private void LoadReservations()
         {
@@ -27,9 +28,18 @@ namespace Management_Hotel.Views
             var dialog = new AddEditReservationDialog();
             if (dialog.ShowDialog() == true)
             {
-                var newReservation = dialog.GetReservation();
-                _viewModel.AddReservation(newReservation);
-                LoadReservations();
+                var result = _viewModel.AddReservation(dialog.GetReservation());
+                if (result)
+                {
+                    MessageBox.Show("Réservation ajoutée avec succès!", "Succès",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadReservations();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de l'ajout de la réservation", "Erreur",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 

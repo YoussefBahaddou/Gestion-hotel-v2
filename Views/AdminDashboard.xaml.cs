@@ -36,54 +36,31 @@ namespace Management_Hotel.Views
 
         private void EmployeesButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new AddEditEmployeeDialog();
-            if (dialog.ShowDialog() == true)
-            {
-                // Handle new employee creation
-                var employee = dialog.Employee;
-                // Add logic to save employee
-            }
+            MainContent.Navigate(new EmployeeManagementView());
         }
+
 
         private void ClientsButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new AddEditClientDialog();
-            if (dialog.ShowDialog() == true)
-            {
-                // Handle new client creation
-                var client = dialog.Client;
-                // Add logic to save client
-            }
+            MainContent.Navigate(new ClientManagementView());
         }
 
         private void RoomTypesButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new AddEditRoomTypeDialog();
-            if (dialog.ShowDialog() == true)
-            {
-                var roomType = dialog.GetRoomType();
-                // Add logic to save room type
-            }
+            MainContent.Navigate(new RoomTypeManagementView());
         }
 
         private void ReservationsButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new AddEditReservationDialog();
-            if (dialog.ShowDialog() == true)
-            {
-                var reservation = dialog.GetReservation();
-                // Add logic to save reservation
-            }
+            MainContent.Navigate(new ReservationManagementView());
         }
+
 
         private void PaymentsButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new AddEditPaymentDialog();
-            if (dialog.ShowDialog() == true)
-            {
-                // Handle payment creation
-            }
+            MainContent.Navigate(new PaymentManagementView());
         }
+
 
         private void AvailabilityButton_Click(object sender, RoutedEventArgs e)
         {

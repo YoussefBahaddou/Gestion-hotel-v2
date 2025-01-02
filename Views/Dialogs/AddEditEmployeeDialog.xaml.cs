@@ -1,5 +1,6 @@
 ﻿using Management_Hotel.Models;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Management_Hotel.Views.Dialogs
 {
@@ -25,25 +26,32 @@ namespace Management_Hotel.Views.Dialogs
             NomTextBox.Text = Employee.Nom;
             PrenomTextBox.Text = Employee.Prenom;
             EmailTextBox.Text = Employee.Email;
-            //TelephoneTextBox.Text = Employee.Telephone;
+            TelephoneTextBox.Text = Employee.Telephone;
+            RoleComboBox.SelectedItem = RoleComboBox.Items.Cast<ComboBoxItem>().FirstOrDefault(item => item.Content.ToString().ToLower() == Employee.Role.ToLower());
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(NomTextBox.Text) || string.IsNullOrWhiteSpace(EmailTextBox.Text) || string.IsNullOrWhiteSpace(TelephoneTextBox.Text) || string.IsNullOrWhiteSpace(PasswordBox.Password))
+            {
+                MessageBox.Show("Veuillez remplir tous les champs obligatoires", "Erreur",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (!IsEditMode)
                 Employee = new Utilisateur();
 
             Employee.Nom = NomTextBox.Text;
             Employee.Prenom = PrenomTextBox.Text;
             Employee.Email = EmailTextBox.Text;
-            //Employee.Telephone = TelephoneTextBox.Text;
-            Employee.Role = "employee";
-
-            if (!string.IsNullOrEmpty(PasswordBox.Password))
-                Employee.Motdepasse = PasswordBox.Password;
+            Employee.Telephone = TelephoneTextBox.Text;
+            Employee.Role = ((ComboBoxItem)RoleComboBox.SelectedItem).Content.ToString().ToLower();
+            Employee.Motdepasse = PasswordBox.Password;
 
             DialogResult = true;
         }
+
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {

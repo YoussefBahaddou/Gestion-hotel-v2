@@ -12,35 +12,22 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,20">
             <Button Content="Nouveau Paiement" Click="AddPayment_Click" 
-                    Width="150" Height="30" Margin="0,0,10,0"/>
-            <Button Content="Exporter" Click="ExportPayments_Click" 
-                    Width="100" Height="30"/>
+                Width="150" Height="30" Margin="0,0,10,0"/>
         </StackPanel>
 
         <DataGrid Grid.Row="2" x:Name="PaymentsGrid" 
-                  AutoGenerateColumns="False" IsReadOnly="True">
+              AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Réservation" 
-                    Binding="{Binding IdreservationNavigation.Idreservation}"/>
+                Binding="{Binding IdreservationNavigation.Idreservation}"/>
                 <DataGridTextColumn Header="Client" 
-                    Binding="{Binding IdreservationNavigation.IdclientNavigation.Nom}"/>
+                Binding="{Binding IdreservationNavigation.IdclientNavigation.Nom}"/>
                 <DataGridTextColumn Header="Date" 
-                    Binding="{Binding Datepaiement}"/>
+                Binding="{Binding Datepaiement}"/>
                 <DataGridTextColumn Header="Montant" 
-                    Binding="{Binding Montant, StringFormat=C}"/>
+                Binding="{Binding Montant, StringFormat=C}"/>
                 <DataGridTextColumn Header="Mode" 
-                    Binding="{Binding Modepaiement}"/>
-                <DataGridTemplateColumn Header="Actions">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="Modifier" Click="EditPayment_Click" 
-                                        Margin="0,0,5,0"/>
-                                <Button Content="Reçu" Click="GenerateReceipt_Click"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                Binding="{Binding Modepaiement}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

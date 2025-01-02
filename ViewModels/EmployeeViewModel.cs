@@ -18,17 +18,33 @@ namespace Management_Hotel.ViewModels
 
         private void LoadEmployees()
         {
+            var employees = _context.Utilisateurs.ToList();
+            Employees = new ObservableCollection<Utilisateur>(employees);
+        }
+
+        //This is the method that shows only the Employee in the table in the "Gestion des employee"
+        /*
+        private void LoadEmployees()
+        {
             var employees = _context.Utilisateurs
                 .Where(u => u.Role.ToLower() == "employee")
                 .ToList();
             Employees = new ObservableCollection<Utilisateur>(employees);
         }
-
-        public void AddEmployee(Utilisateur employee)
+        */
+        public bool AddEmployee(Utilisateur employee)
         {
-            _context.Utilisateurs.Add(employee);
-            _context.SaveChanges();
-            Employees.Add(employee);
+            try
+            {
+                _context.Utilisateurs.Add(employee);
+                _context.SaveChanges();
+                Employees.Add(employee);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public void UpdateEmployee(Utilisateur employee)

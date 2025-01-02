@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Management_Hotel.Views.Dialogs.AddEditClientDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Gestion Client" Height="500" Width="400"
+        Title="Gestion Client" Height="531" Width="400"
         WindowStartupLocation="CenterScreen">
     <StackPanel Margin="20">
         <TextBlock Text="Informations du client" FontSize="20" Margin="0,0,0,20"/>

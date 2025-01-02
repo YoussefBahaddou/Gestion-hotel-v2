@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Management_Hotel.Views.Dialogs.AddEditRoomTypeDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Type de Chambre" Height="450" Width="400"
+        Title="Type de Chambre" Height="474" Width="400"
         WindowStartupLocation="CenterScreen">
     <StackPanel Margin="20">
         <TextBlock Text="Détails du type de chambre" FontSize="20" Margin="0,0,0,20"/>

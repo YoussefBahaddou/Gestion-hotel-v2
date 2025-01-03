@@ -55,5 +55,25 @@ namespace Management_Hotel.ViewModels
                 .Where(p => p.Idreservation == reservationId)
                 .Sum(p => p.Montant);
         }
+
+        public void DeletePayment(int paymentId)
+        {
+            var payment = _context.Paiements.Find(paymentId);
+            if (payment != null)
+            {
+                _context.Paiements.Remove(payment);
+                _context.SaveChanges();
+                LoadPayments();
+            }
+        }
+        public Paiement GetPaymentWithDetails(int paymentId)
+        {
+            return _context.Paiements
+                .Include(p => p.IdreservationNavigation)
+                .ThenInclude(r => r.IdclientNavigation)
+                .FirstOrDefault(p => p.Idpaiement == paymentId);
+        }
+
+
     }
 }

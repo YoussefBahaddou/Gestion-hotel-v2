@@ -63,6 +63,12 @@ namespace Management_Hotel.ViewModels
             }
         }
 
+        public bool HasPayments(int reservationId)
+        {
+            return _context.Paiements.Any(p => p.Idreservation == reservationId);
+        }
+
+
         public void GenerateReservationPDF(int reservationId)
         {
             // PDF generation logic will be implemented here

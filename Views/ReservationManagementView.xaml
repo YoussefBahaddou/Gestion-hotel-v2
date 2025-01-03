@@ -28,6 +28,19 @@
                 Binding="{Binding Datedepart}"/>
                 <DataGridTextColumn Header="Statut" 
                 Binding="{Binding Statut}"/>
+                <DataGridTemplateColumn Header="Actions" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Modifier" 
+                            Click="UpdateReservation_Click"
+                            Margin="0,0,10,0"/>
+                                <Button Content="Supprimer" 
+                            Click="DeleteReservation_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

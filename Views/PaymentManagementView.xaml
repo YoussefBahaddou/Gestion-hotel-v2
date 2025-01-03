@@ -15,8 +15,25 @@
                 Width="150" Height="30" Margin="0,0,10,0"/>
         </StackPanel>
 
-        <DataGrid Grid.Row="2" x:Name="PaymentsGrid" 
-              AutoGenerateColumns="False" IsReadOnly="True">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,20">
+            <Button Content="Nouveau Paiement" 
+            Click="AddPayment_Click" 
+            Width="150" Height="30" 
+            Margin="0,0,10,0"/>
+            <Button Content="Générer PDF" 
+            Click="GenerateReport_Click"
+            Width="120" Height="30" 
+            Margin="0,0,10,0"/>
+            <Button Content="Envoyer Email" 
+            Click="SendConfirmation_Click"
+            Width="120" Height="30"/>
+        </StackPanel>
+
+
+        <DataGrid Grid.Row="2" x:Name="PaymentsGrid" AutoGenerateColumns="False" 
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Réservation" 
                 Binding="{Binding IdreservationNavigation.Idreservation}"/>
@@ -28,6 +45,19 @@
                 Binding="{Binding Montant, StringFormat=C}"/>
                 <DataGridTextColumn Header="Mode" 
                 Binding="{Binding Modepaiement}"/>
+                <DataGridTemplateColumn Header="Actions" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Modifier" 
+                                    Click="UpdatePayment_Click"
+                                    Margin="0,0,10,0"/>
+                                <Button Content="Supprimer" 
+                                    Click="DeletePayment_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

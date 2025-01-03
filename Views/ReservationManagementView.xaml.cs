@@ -43,7 +43,7 @@ namespace Management_Hotel.Views
             }
         }
 
-        private void EditReservation_Click(object sender, RoutedEventArgs e)
+        private void UpdateReservation_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.DataContext is Reservation reservation)
             {
@@ -58,13 +58,26 @@ namespace Management_Hotel.Views
             }
         }
 
+
         private void DeleteReservation_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.DataContext is Reservation reservation)
             {
+                var hasPayments = _viewModel.HasPayments(reservation.Idreservation);
+
+                if (hasPayments)
+                {
+                    MessageBox.Show(
+                        "Cette réservation ne peut pas être supprimée car elle a des paiements associés.",
+                        "Suppression impossible",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
                 var result = MessageBox.Show(
                     "Êtes-vous sûr de vouloir supprimer cette réservation ?",
-                    "Confirmation",
+                    "Confirmation de suppression",
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question);
 
@@ -75,6 +88,8 @@ namespace Management_Hotel.Views
                 }
             }
         }
+
+
 
         private void GeneratePDF_Click(object sender, RoutedEventArgs e)
         {

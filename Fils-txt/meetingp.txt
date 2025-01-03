@@ -1,0 +1,13 @@
+Projet : Gestion d'Hotel 
+
+Technologies : 
+
+C#
+PostgreSQL 
+EntityFramework 
+WPF
+
+1- Create database 
+2- Migration vers visual studio avec la commande : Scaffold-DbContext Host=localhost;Database=HotelDB;Username=postgres;Password=123456" Npgsql.EntityFrameworkCore.PostgreSQL -OutputDir Models -Context HotelDbContext : cette comande m'a cree les modele dans le dossier Models.
+3- 
+

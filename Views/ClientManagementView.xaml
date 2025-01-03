@@ -21,6 +21,19 @@
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Téléphone" Binding="{Binding Telephone}"/>
                 <DataGridTextColumn Header="Adresse" Binding="{Binding Adresse}"/>
+                <DataGridTemplateColumn Header="Actions" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Modifier" 
+                                Click="UpdateClient_Click"
+                                Margin="0,0,10,0"/>
+                                <Button Content="Supprimer" 
+                                Click="DeleteClient_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

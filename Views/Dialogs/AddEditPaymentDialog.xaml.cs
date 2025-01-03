@@ -44,6 +44,16 @@ namespace Management_Hotel.Views.Dialogs
             return _payment;
         }
 
+        public void SetPayment(Paiement payment)
+        {
+            _payment = payment;
+            ReservationComboBox.SelectedValue = payment.Idreservation;
+            MontantTextBox.Text = payment.Montant.ToString();
+            DatePaiementPicker.SelectedDate = payment.Datepaiement;
+            ModePaiementComboBox.Text = payment.Modepaiement;
+        }
+
+
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (ReservationComboBox.SelectedValue == null ||

@@ -29,7 +29,7 @@ namespace Hotel_Management.Services
                 document.Add(new Paragraph($"Client : {payment.IdreservationNavigation.IdclientNavigation.Nom}"));
                 document.Add(new Paragraph($"Date : {payment.Datepaiement}"));
                 document.Add(new Paragraph($"Montant : {payment.Montant:C}"));
-                //document.Add(new Paragraph($"Mode de paiement : {payment.Modepaiement}"));
+                document.Add(new Paragraph($"Mode de paiement : {payment.Modepaiement}"));
 
                 document.Close();
             }

@@ -55,5 +55,11 @@ namespace Management_Hotel.ViewModels
                 Clients.Remove(client);
             }
         }
+
+        public bool HasReservations(int clientId)
+        {
+            return _context.Reservations.Any(r => r.Idclient == clientId);
+        }
+
     }
 }

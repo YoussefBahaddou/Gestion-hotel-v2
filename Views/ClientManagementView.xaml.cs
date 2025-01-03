@@ -42,7 +42,7 @@ namespace Management_Hotel.Views
             }
         }
 
-        private void EditClient_Click(object sender, RoutedEventArgs e)
+        private void UpdateClient_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.DataContext is Client client)
             {
@@ -60,9 +60,21 @@ namespace Management_Hotel.Views
         {
             if (sender is Button button && button.DataContext is Client client)
             {
+                var hasReservations = _viewModel.HasReservations(client.Idclient);
+
+                if (hasReservations)
+                {
+                    MessageBox.Show(
+                        "Ce client ne peut pas être supprimé car il a des réservations associées.",
+                        "Suppression impossible",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
                 var result = MessageBox.Show(
                     "Êtes-vous sûr de vouloir supprimer ce client ?",
-                    "Confirmation",
+                    "Confirmation de suppression",
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question);
 
@@ -73,6 +85,7 @@ namespace Management_Hotel.Views
                 }
             }
         }
+
 
         private void ViewReservations_Click(object sender, RoutedEventArgs e)
         {

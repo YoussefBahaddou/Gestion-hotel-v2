@@ -54,5 +54,11 @@ namespace Management_Hotel.ViewModels
                 RoomTypes.Remove(roomType);
             }
         }
+
+        /*public bool HasReservations(int roomTypeId)
+        {
+            return _context.Reservations.Any(r => r.Idtype == roomTypeId);
+        }*/
+
     }
 }

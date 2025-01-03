@@ -7,6 +7,7 @@ namespace Management_Hotel.Views.Dialogs
     {
         private Typechambre _roomType;
 
+
         public AddEditRoomTypeDialog()
         {
             InitializeComponent();
@@ -30,11 +31,50 @@ namespace Management_Hotel.Views.Dialogs
             _roomType.Prixnuit = decimal.Parse(PrixTextBox.Text);
             return _roomType;
         }
-        
+
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(LibelleTextBox.Text) ||
+                string.IsNullOrWhiteSpace(DescriptionTextBox.Text) ||
+                string.IsNullOrWhiteSpace(CapaciteTextBox.Text) ||
+                string.IsNullOrWhiteSpace(PrixTextBox.Text))
+            {
+                MessageBox.Show("Veuillez remplir tous les champs obligatoires", "Erreur",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             DialogResult = true;
         }
+
+        /*private void DeleteRoomType_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.DataContext is Typechambre roomType)
+            {
+                if (_viewModel.HasReservations(roomType.Idtype))
+                {
+                    MessageBox.Show(
+                        "Ce type de chambre ne peut pas être supprimé car il est associé à des réservations.",
+                        "Suppression impossible",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                var result = MessageBox.Show(
+                    "Êtes-vous sûr de vouloir supprimer ce type de chambre ?",
+                    "Confirmation",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    _viewModel.DeleteRoomType(roomType.Idtype);
+                    LoadRoomTypes();
+                }
+            }
+        }
+        */
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {

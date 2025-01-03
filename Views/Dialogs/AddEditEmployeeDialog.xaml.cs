@@ -38,6 +38,12 @@ namespace Management_Hotel.Views.Dialogs
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if (string.IsNullOrWhiteSpace(NomTextBox.Text) || string.IsNullOrWhiteSpace(EmailTextBox.Text) || string.IsNullOrWhiteSpace(TelephoneTextBox.Text) || string.IsNullOrWhiteSpace(PasswordBox.Password))
+            {
+                MessageBox.Show("Veuillez remplir tous les champs obligatoires", "Erreur",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             if (!IsEditMode)
                 Employee = new Utilisateur();

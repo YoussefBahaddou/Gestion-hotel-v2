@@ -26,24 +26,6 @@ namespace Management_Hotel.Views.Dialogs
             ReservationComboBox.SelectedValuePath = "Idreservation";
         }
 
-        /*public void SetPayment(Paiement payment)
-        {
-            _payment = payment;
-            ReservationComboBox.SelectedValue = payment.Idreservation;
-            MontantTextBox.Text = payment.Montant.ToString();
-            DatePaiementPicker.SelectedDate = payment.Datepaiement.ToDateTime(TimeOnly.MinValue);
-            ModePaiementComboBox.Text = payment.Modepaiement;
-        }*/
-
-        public Paiement GetPayment()
-        {
-            _payment.Idreservation = (int)ReservationComboBox.SelectedValue;
-            _payment.Montant = decimal.Parse(MontantTextBox.Text);
-            _payment.Datepaiement = DatePaiementPicker.SelectedDate.Value;
-            _payment.Modepaiement = ModePaiementComboBox.Text;
-            return _payment;
-        }
-
         public void SetPayment(Paiement payment)
         {
             _payment = payment;
@@ -52,6 +34,16 @@ namespace Management_Hotel.Views.Dialogs
             DatePaiementPicker.SelectedDate = payment.Datepaiement;
             ModePaiementComboBox.Text = payment.Modepaiement;
         }
+
+        public Paiement GetPayment()
+        {
+            _payment.Idreservation = (int)ReservationComboBox.SelectedValue;
+            _payment.Montant = decimal.Parse(MontantTextBox.Text);
+            _payment.Datepaiement = DatePaiementPicker.SelectedDate ?? DateTime.Now;
+            _payment.Modepaiement = ModePaiementComboBox.Text;
+            return _payment;
+        }
+
 
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

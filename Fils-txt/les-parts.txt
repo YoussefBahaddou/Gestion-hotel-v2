@@ -1,0 +1,37 @@
+Here's a logical division of the projDotNet project into four distinct parts for your presentation:
+
+Part 1 - Database & Models:
+
+Database design and structure
+HotelDbContext configuration
+Models folder with all entity classes
+Database relationships and migrations
+Connection management
+
+Part 2 - Authentication & User Management:
+
+Login system
+User roles (admin/employee)
+LoginViewModel and LoginWindow
+EmployeeViewModel and management
+User settings and security
+
+Part 3 - Reservation & Client Management:
+
+Client management system
+Reservation handling
+ClientViewModel implementation
+ReservationViewModel functionality
+Related views and dialogs
+
+Part 4 - Financial & Room Management:
+
+Payment processing system
+Room type management
+PaymentViewModel implementation
+RoomTypeViewModel functionality
+Dashboard statistics and reporting
+Each part represents a cohesive set of features that can be explained independently while showing how it integrates with the whole system. This division ensures balanced complexity across team members and covers all major aspects of the hotel management system.
+
+
+

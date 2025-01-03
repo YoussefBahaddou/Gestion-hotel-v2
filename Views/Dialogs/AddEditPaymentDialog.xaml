@@ -189,6 +189,10 @@
             <DatePicker x:Name="DatePaiementPicker" 
                         Height="40"
                         Padding="10,0"
+                        SelectedDate="{Binding Datepaiement}"
+                        DisplayDateStart="2000-01-01"
+                        DisplayDateEnd="2100-12-31"
+                        FirstDayOfWeek="Monday"
                         Margin="0,0,0,20"/>
 
             <TextBlock Text="Mode de paiement" 

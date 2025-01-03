@@ -21,7 +21,7 @@ namespace Management_Hotel.Views.Dialogs
             // Load Clients
             var clients = _context.Clients.ToList();
             ClientComboBox.ItemsSource = clients;
-            ClientComboBox.DisplayMemberPath = "Nom";
+            ClientComboBox.DisplayMemberPath = "NomComplet"; // We'll add this property
             ClientComboBox.SelectedValuePath = "Idclient";
 
             // Load Room Types
@@ -30,6 +30,7 @@ namespace Management_Hotel.Views.Dialogs
             RoomTypeComboBox.DisplayMemberPath = "Libelle";
             RoomTypeComboBox.SelectedValuePath = "Idtype";
         }
+
 
         public void SetReservation(Reservation reservation)
         {
@@ -60,6 +61,11 @@ namespace Management_Hotel.Views.Dialogs
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+        }
+
+        private void ClientComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Management_Hotel.Views.Dialogs
             PrenomTextBox.Text = Client.Prenom;
             EmailTextBox.Text = Client.Email;
             TelephoneTextBox.Text = Client.Telephone;
-            //AdresseTextBox.Text = Client.Adresse;
+            AdresseTextBox.Text = Client.Adresse;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

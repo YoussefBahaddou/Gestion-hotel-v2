@@ -14,4 +14,10 @@ public partial class Typechambre
     public int Capacite { get; set; }
 
     public decimal Prixnuit { get; set; }
+
+    public override string ToString()
+    {
+        return Libelle;
+    }
+
 }

@@ -17,5 +17,13 @@ public partial class Client
 
     public string Adresse { get; set; } = null!;
 
+    public string NomComplet => $"{Nom} {Prenom}";
+
     public virtual ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
+
+    public override string ToString()
+    {
+        return NomComplet;
+    }
+
 }
